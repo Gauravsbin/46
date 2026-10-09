@@ -1,0 +1,13 @@
+Experiment_or_check,Status,Reason_or_limitation
+Near-duplicate audit within benchmark,NOT RUN / no source dataset in ZIP,"Requires original labeled benchmark CSV; the supplied CV script uses shuffled StratifiedKFold, not duplicate-grouped folds."
+Cross-corpus overlap audit,NOT RUN / raw corpora absent,Cannot establish overlap from aggregate result tables alone.
+Repeated grouped CV with fold-local tuning,NOT RUN / raw corpus absent,Supplied user_experiment_results_sp_cv.csv reports five-fold stratified CV with no group isolation or nested tuning.
+DistilBERT/transformer grouped baseline,NOT RUN,"No dataset/model runtime available in the supplied archive; must run with the notebook and source data, preferably GPU."
+Gradient Boosting vs other models: paired test and CI,NOT REPRODUCIBLE FROM AGGREGATES,The supplied cross-validation CSV excludes Gradient Boosting and contains no per-email out-of-fold predictions.
+Cue ablation and confidence intervals,NOT RUN,No saved predictions or feature matrix; cue claims need controlled ablation and paired uncertainty.
+Normalization baseline and adaptive attacker,"PARTIAL, UNVERIFIED","e4_obf.csv contains aggregate recall-like rates for three simple perturbations, but not a normalization baseline or adaptive attacker; underlying test texts and model files are absent."
+External cross-corpus test on SP corpus,AGGREGATE RESULTS PRESENT; NOT INDEPENDENTLY REPRODUCED,"e1_sp.csv contains transfer metrics for seven saved-model families; data, weights and prediction-level outputs are not included."
+Human vs LLM-generated phishing recall,AGGREGATE RESULTS PRESENT; NOT INDEPENDENTLY REPRODUCED,e2_human_llm.csv has aggregate rates only; corpora and model artifacts are absent.
+Latency/model-size benchmark,AGGREGATE RESULTS PRESENT; NOT INDEPENDENTLY REPRODUCED,e5_cost.csv has point estimates only; no repeated timing runs or hardware metadata.
+MEMM order-dependence audit,SCRIPT PRESENT; OUTPUT ABSENT,memm_order.py exists but no run log/result was included.
+Correct/reconcile original manuscript tables,NOT VERIFIED,Must recompute from original held-out predictions and confirm label encoding/splits.
